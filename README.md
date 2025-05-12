@@ -1,8 +1,6 @@
 # MEDIxtract Server  
 *A Flask-based application for extracting structured data from images/PDFs using AI*
 
-![Demo](https://img.shields.io/badge/Demo-Av://img.shields.io/badge/P](https://img.shields.io/badge/Flask-2.0%2B-lightgreyures
-
 - **Multi-Format Support**  
   Process both image files (JPEG/PNG) and PDF documents.
 
