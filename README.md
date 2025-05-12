@@ -1,74 +1,101 @@
-MEDIxtract Server
-MEDIxtract Server is a Flask-based web application designed to process image and PDF files, extract relevant data (like particulars and amounts), and store the results in an Excel file. It utilizes OpenAI's GPT model for text extraction and formatting, and supports image and PDF uploads.
+# MEDIxtract Server  
+*A Flask-based application for extracting structured data from images/PDFs using AI*
 
-Features
-Upload image files (JPEG, PNG) or PDF files.
-Extract text data from uploaded images using a remote API.
-Extract text from PDFs and format it using OpenAI GPT.
-Store the extracted and formatted data in an Excel file.
-Download the generated Excel file.
-Folder Structure
-uploads/: Stores the uploaded image and PDF files.
-excel_files/: Stores the generated Excel files containing the extracted data.
-Tech Stack
-Python: Backend development
-Flask: Web framework
-OpenAI GPT: For text extraction and formatting
-PyPDF2: For extracting text from PDFs
-openpyxl: For writing data to Excel files
-requests: For making HTTP requests to external services
-Installation
-Clone the repository:
+![Demo](https://img.shields.io/badge/Demo-Av://img.shields.io/badge/P](https://img.shields.io/badge/Flask-2.0%2B-lightgreyures
 
-bash
-Copy code
-git clone https://github.com/Aakash0705/MEDIExtract-Server.git
-cd MEDIExtract-Server
-Set up a virtual environment:
+- **Multi-Format Support**  
+  Process both image files (JPEG/PNG) and PDF documents.
 
-bash
-Copy code
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-Install the required dependencies:
+- **AI-Powered Extraction**  
+  Uses OpenAI GPT to intelligently extract and format key data (particulars, amounts, etc.).
 
-bash
-Copy code
-pip install -r requirements.txt
-Set your OpenAI API key in the openai.api_key variable:
+- **Excel Integration**  
+  Automatically stores extracted data in organized Excel spreadsheets.
 
-python
-Copy code
-openai.api_key = 'your-openai-api-key'
-Create the necessary folders:
+- **Easy File Management**  
+  Dedicated folders for uploads (`uploads/`) and generated files (`excel_files/`).
 
-bash
-Copy code
-mkdir uploads
-mkdir excel_files
-Usage
-Start the Flask server:
+- **Simple API Endpoints**  
+  RESTful routes for uploading files and downloading results.
 
-bash
-Copy code
-python main.py <folder_path>
-Replace <folder_path> with the path to the folder where your project files are located.
+---
 
-Access the app at http://127.0.0.1:5000/.
+## Tech Stack
 
-Uploading Files
-Use the /post_image route to upload image or PDF files.
-Processed data will be stored in an Excel file and can be downloaded from the /download_excel route.
-Endpoints
-GET /: Returns a welcome message.
-POST /post_image: Uploads and processes an image or PDF file.
-GET /download_excel: Downloads the generated Excel file.
-Error Handling
-The application will return appropriate error messages if file uploads fail or if issues occur during data extraction and processing.
-Future Enhancements
-Add support for additional file types.
-Improve data extraction methods.
-Add more customizable formatting options for extracted data.
-Contributing
-Feel free to fork this repository and submit pull requests for any improvements or bug fixes.
+- **Backend**: Python + Flask
+- **AI Engine**: OpenAI GPT
+- **PDF Processing**: PyPDF2
+- **Excel Handling**: openpyxl
+- **HTTP Requests**: requests
 
+---
+
+## Installation
+
+1. **Clone the repository**  
+   ```bash
+   git clone https://github.com/Aakash0705/MEDIExtract-Server.git
+   cd MEDIExtract-Server
+   ```
+
+2. **Set up virtual environment**  
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # Windows: venv\Scripts\activate
+   ```
+
+3. **Install dependencies**  
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Configure API Key**  
+   Add your OpenAI API key in `main.py`:  
+   ```python
+   openai.api_key = 'your-api-key-here'  # Replace with actual key
+   ```
+
+5. **Create directories**  
+   ```bash
+   mkdir uploads excel_files
+   ```
+
+---
+
+## Usage
+
+### Running the Server
+```bash
+python main.py 
+```
+Access via: `http://127.0.0.1:5000/`
+
+### File Upload Instructions
+1. **POST** to `/post_image` with your image/PDF file
+2. **GET** `/download_excel` to retrieve processed data
+
+---
+
+## API Endpoints
+
+| Method | Route             | Description                          |
+|--------|-------------------|--------------------------------------|
+| GET    | `/`               | Welcome message                      |
+| POST   | `/post_image`     | Upload image/PDF for processing      |
+| GET    | `/download_excel` | Download generated Excel file        |
+
+---
+
+## Error Handling  
+Returns JSON-formatted errors for:
+- Invalid file uploads
+- API key failures
+- Processing errors
+
+---
+
+## Future Roadmap
+- Support additional file formats (e.g., DOCX)
+- Enhanced data validation
+- Customizable Excel templates
+- Batch processing support
